@@ -1,0 +1,28 @@
+.other-products-card {
+    padding: 20px;
+    gap: 20px;
+    border: 2px solid $border-color;
+    border-radius: $small-border-radius;
+    background-color: $light-color2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 24px;
+
+    &-image {
+        width: 100%;
+        height: auto;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
+    &-title {
+        text-align: center;
+    }
+}

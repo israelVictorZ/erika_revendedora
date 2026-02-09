@@ -1,0 +1,63 @@
+.footer {
+    &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    &-logo {
+        height: 40px;
+        width: auto;
+
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &-nav {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 24px;
+        list-style: none;
+
+        a {
+            text-decoration: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    &-copyright {
+        background-color: $main-color;
+        padding-top: 24px;
+        padding-bottom: 24px;
+
+        span a {
+            text-decoration: underline;
+        }
+
+        &-left,
+        &-right {
+            text-align: center;
+        }
+
+        @include for-size(big-tablet-medium) {
+            padding-top: 40px;
+            padding-bottom: 40px;
+
+            &-left {
+                text-align: left;
+            }
+
+            &-right {
+                text-align: right;
+            }
+        }
+    }
+}

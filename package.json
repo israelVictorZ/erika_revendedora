@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "start": "npm install && npm run setup",
+    "setup": "npm run create-dirs && npm run create-files && npm run create-compress-script",
+    "create-dirs": "mkdir dist src src\\scss src\\img src\\js dist\\img",
+    "create-files": "type nul > dist\\script.min.js && type nul > dist\\style.min.css && type nul > src\\scss\\style.scss && type nul > src\\js\\script.js && echo node_modules > .gitignore && echo compress-images.js >> .gitignore",
+    "compile-scss": "sass src/scss/style.scss dist/style.min.css --style compressed",
+    "minify-js": "terser src/js/script.js -o dist/script.min.js",
+    "compress-images": "node compress-images.js",
+    "watch": "nodemon --watch src --ext scss,js -x \"npm run compile-scss && npm run minify-js\"",
+    "dev": "npm run compile-scss && npm run minify-js",
+    "create-compress-script": "echo import i from'imagemin';import m from'imagemin-mozjpeg';import g from'imagemin-pngquant';import o from'imagemin-svgo';import n from'glob';!async function(){let p=await i(n.sync('src/img/**/*.{jpg,jpeg,png,svg,webp}'),{destination:'dist/img',plugins:[m(),g(),o()]});console.log('Images optimized:',p)}(); > compress-images.js"
+  },
+  "devDependencies": {
+    "glob": "^7.2.3",
+    "imagemin": "8.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "8.0.0",
+    "imagemin-svgo": "^10.0.0",
+    "nodemon": "^2.0.15",
+    "sass": "^1.43.4",
+    "terser": "^5.10.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}

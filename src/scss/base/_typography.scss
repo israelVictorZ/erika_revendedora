@@ -1,0 +1,90 @@
+.header-text,
+.header-text * {
+    font-family: $main-text;
+    font-size: $xsmall-font-size;
+    color: $light-color1;
+
+    @include for-size(small-tablet-medium) {
+        font-size: $small-font-size;
+    }
+}
+
+.footer {
+    &-nav a {
+        font-family: $main-text;
+        font-size: $xsmall-font-size;
+        color: $dark-color1;
+    }
+
+    &-copyright span, &-copyright span a {
+        font-family: $main-text;
+        font-size: $xsmall-font-size;
+        color: $light-color1;
+    }
+}
+
+.banner-title {
+    font-family: $main-titles;
+    font-size: map-get($xxlarge-font-size, small);
+    color: $light-color1;
+    line-height: 56px;
+    margin-bottom: 40px;
+
+    @include for-size(big-tablet-medium) {
+        font-size: map-get($xxlarge-font-size, large);
+        line-height: 96px;
+    }
+
+    @include for-size(tablet-landscape-up) {
+        font-size: map-get($xxlarge-font-size, medium);
+        line-height: 76px;
+        margin: 0;
+    }
+
+    @include for-size(desktop-up) {
+        font-size: map-get($xxlarge-font-size, large);
+        line-height: 96px;
+    }
+}
+
+.custom-button-text {
+    font-family: $main-text;
+    font-size: $small-font-size;
+    color: $light-color1;
+    font-weight: 600;
+}
+
+.cards-title {
+    font-family: $main-text;
+    font-size: $medium-font-size;
+    color: $dark-color1;
+    font-weight: 600;
+}
+
+.main-subtitle {
+    font-family: $main-titles;
+    font-size: $medium-font-size;
+    color: $dark-color1;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.main-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+        font-family: $main-text;
+        font-size: $small-font-size;
+        margin-bottom: 0;
+    }
+
+    &-light-color * {
+        color: $light-color1;
+    }
+
+    &-dark-color * {
+        color: $dark-color1;
+    }
+}

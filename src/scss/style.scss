@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// 1. Configurations
+@import 
+    'abstracts/mixins',
+    'abstracts/variables';
+
+//2. Vendors
+@import
+    'vendors/npm-vendors';
+
+//3. Base Stuff
+@import
+    'base/base',
+    'base/typography';
+
+// 4. Layout Sections
+@import
+    'layout/header',
+    'layout/banner',
+    'layout/about',
+    'layout/other-products',
+    'layout/cacau-show',
+    'layout/footer';
+
+//5. Components
+@import
+    'components/button',
+    'components/cards';
+
+//6. Pages
+// @import
+//     'pages/home';

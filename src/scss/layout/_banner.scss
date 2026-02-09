@@ -1,0 +1,185 @@
+.banner {
+    padding-top: 160px;
+    background-image: url(img/aurora.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    transition: background-position calc($main-transition * 4) ease;
+    overflow: hidden;
+
+    &.bg-position-left {
+        background-position: left;
+    }
+
+    &.bg-position-center {
+        background-position: center;
+    }
+
+    &.bg-position-right {
+        background-position: right;
+    }
+
+    &-content-box {
+        padding: 0;
+
+        @include for-size(tablet-landscape-up) {
+            padding: 60px 0;
+        }
+
+        @include for-size(desktop-up) {
+            padding: 200px 0;
+        }
+    }
+
+    &-image {
+        &-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 570px;
+
+            @include for-size(small-tablet-medium) {
+                min-height: 760px;
+            }
+
+            @include for-size(big-tablet-medium) {
+                min-height: 950px;
+            }
+
+            @include for-size(tablet-landscape-up) {
+                min-height: 680px;
+            }
+
+            @include for-size(desktop-up) {
+                min-height: 760px;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: linear-gradient(180deg, rgba($light-color1, 0.15) 0%, rgba($light-color1, 0.3) 100%);
+                border: 1px solid rgba($light-color1, 0.4);
+                border-radius: $small-border-radius;
+                z-index: 0;
+                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+
+                $button-size: 72px;
+                $button-gap: 16px;
+                $bottom-offset: 40px;
+                $right-offset: 40px;
+
+                mask-image:
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$button-size}' height='#{$button-size}'%3E%3Crect width='#{$button-size}' height='#{$button-size}' rx='8'/%3E%3C/svg%3E"),
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$button-size}' height='#{$button-size}'%3E%3Crect width='#{$button-size}' height='#{$button-size}' rx='8'/%3E%3C/svg%3E"),
+                    linear-gradient(#000, #000);
+                mask-position:
+                    calc(100% - #{$right-offset}) calc(100% - #{$bottom-offset}),
+                    calc(100% - #{$right-offset + $button-size + $button-gap}) calc(100% - #{$bottom-offset}),
+                    0 0;
+                mask-size:
+                    $button-size $button-size,
+                    $button-size $button-size,
+                    100% 100%;
+                mask-repeat: no-repeat;
+                mask-composite: exclude;
+                -webkit-mask-composite: destination-out;
+            }
+
+            &-arrows {
+                position: absolute;
+                bottom: 40px;
+                right: 40px;
+                display: flex;
+                gap: 16px;
+                z-index: 2;
+            }
+
+            &-arrow {
+                &-left,
+                &-right {
+                    width: 72px;
+                    height: 72px;
+                    border: 1px solid rgba($light-color1, 0.4);
+                    border-radius: $xsmall-border-radius;
+                    background-color: transparent;
+                    padding: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &.disabled {
+                        cursor: default;
+                        pointer-events: none;
+
+                        span {
+                            opacity: 0.4;
+                        }
+                    }
+
+                    span {
+                        font-size: 32px;
+                        color: #fff;
+                        user-select: none;
+                        transition: $main-transition;
+                    }
+                }
+            }
+        }
+
+        &-collection {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: calc(100% - 60px);
+            padding-bottom: 40px;
+        }
+
+        &-item {
+            &-1,
+            &-2,
+            &-3 {
+                position: absolute;
+                top: 48%;
+                left: 44%;
+                width: 100%;
+                height: 92%;
+                object-fit: contain;
+                opacity: 0;
+                transition: 0.3s;
+                animation: bannerAnimation 3s infinite;
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+
+            &-1 {
+                transform: translate(-50%, -50%) rotate(-9deg);
+            }
+
+            &-2 {
+                transform: translate(-50%, -50%) rotate(24deg);
+                left: 56%;
+                height: 96%;
+            }
+
+            &-3 {
+                transform: translate(-50%, -50%) rotate(-20deg);
+            }
+
+            @keyframes bannerAnimation {
+                0% {
+                    top: 48%;
+                }
+                50% {
+                    top: calc(48% - 20px);
+                }
+                100% {
+                    top: 48%;
+                }
+            }
+        }
+    }
+}
